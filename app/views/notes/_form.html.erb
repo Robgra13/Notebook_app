@@ -1,0 +1,23 @@
+<div class="container">
+    <%= form_with(model: note) do |form| %>
+    <div class="mb-3 mt-3">
+        <%= form.label :title, class:"form-label" %>
+        <%= form.text_field :title, class:"form-control", style:"width: 25rem;" %>
+    </div>
+    <div class="mb-3 mt-3">
+        <%= form.label :content, class:"form-label" %>
+        <%= form.rich_text_area :content, placeholder:"Enter the content..." %>
+        
+    </div>
+    <% if request.path == new_note_path %>
+        <div>
+                <%= form.submit "Create note", class:"btn btn-primary mt-3"%>
+        </div>
+    <% elsif request.path == edit_note_path(@note)  %>
+        <div>
+            <%= form.submit "Edit note", class:"btn btn-primary mt-3"%>
+        </div>
+    <% end%>
+    </div>
+    <% end %>
+</div>
